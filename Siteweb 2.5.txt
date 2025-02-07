@@ -1,0 +1,109 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر إلكتروني</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>متجري الإلكتروني</h1>
+    </header>
+    <main>
+        <section class="products">
+            <h2>المنتجات</h2>
+            <div class="product">
+                <h3>منتج 1</h3>
+                <p>وصف المنتج 1</p>
+                <button onclick="addToCart('منتج 1')">أضف إلى السلة</button>
+            </div>
+            <div class="product">
+                <h3>منتج 2</h3>
+                <p>وصف المنتج 2</p>
+                <button onclick="addToCart('منتج 2')">أضف إلى السلة</button>
+            </div>
+        </section>
+        <button id="chatButton">فتح الشات</button>
+        <div id="chatBox" class="chat-box">
+            <div class="chat-header">
+                <h3>الدردشة</h3>
+                <button onclick="closeChat()">إغلاق</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button onclick="sendMessage()">إرسال</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html><style>body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.products {
+    margin: 20px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.chat-box {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+}
+
+.chat-messages {
+    height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#chatInput {
+    width: 70%;
+}</style><script>document.getElementById('chatButton').onclick = function() {
+    document.getElementById('chatBox').style.display = 'block';
+};
+
+function closeChat() {
+    document.getElementById('chatBox').style.display = 'none';
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value;
+    if (message) {
+        const chatMessages = document.getElementById('chatMessages');
+        const newMessage = document.createElement('div');
+        newMessage.textContent = message;
+        chatMessages.appendChild(newMessage);
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+    }
+}
+
+function addToCart(product) {
+    alert(product + ' تم إضافته إلى السلة!');
+}</script>
